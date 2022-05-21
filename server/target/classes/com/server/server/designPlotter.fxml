@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<Pane fx:id="AppController" maxHeight="550.0" maxWidth="543.0" prefHeight="548.0" prefWidth="543.0" scaleShape="false" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.server.server.ReceiverController">
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="195.0" layoutX="325.0" layoutY="321.0" stroke="BLACK" strokeType="INSIDE" width="209.0" />
+    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="195.0" layoutX="13.0" layoutY="321.0" stroke="BLACK" strokeType="INSIDE" width="302.0" />
+    <Label layoutX="104.0" layoutY="337.0" style="-fx-text-fill: #0000FF;" text="Received Message" />
+    <ImageView fitHeight="362.0" fitWidth="543.0" layoutY="-57.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@images/securityMan.jpg" />
+        </image>
+    </ImageView>
+    <TextArea id="textAreaField" fx:id="textAreaField" editable="false" layoutX="30.0" layoutY="373.0" prefHeight="100.0" prefWidth="269.0" />
+    <Separator layoutX="29.0" layoutY="360.0" prefHeight="4.0" prefWidth="269.0" />
+   <Button fx:id="receiveButton" layoutX="112.0" layoutY="482.0" mnemonicParsing="false" onAction="#receiveNow" text="Start Receive" visible="false" />
+   <CheckBox id="checkbox" fx:id="checkBox" layoutX="358.0" layoutY="480.0" mnemonicParsing="false" text="Encrypt With Params" textAlignment="CENTER" />
+   <TextField id="p_value" fx:id="p_value" layoutX="355.0" layoutY="344.0" />
+   <TextField id="q_value" fx:id="q_value" layoutX="355.0" layoutY="391.0" />
+   <TextField id="e_value" fx:id="e_value" layoutX="355.0" layoutY="441.0" />
+   <Label layoutX="337.0" layoutY="347.0" text="P" />
+   <Label layoutX="336.0" layoutY="393.0" text="q" />
+   <Label layoutX="337.0" layoutY="445.0" text="e" />
+</Pane>

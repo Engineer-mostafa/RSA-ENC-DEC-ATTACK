@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<Pane fx:id="AppController" maxHeight="550.0" maxWidth="518.0" prefHeight="509.0" prefWidth="408.0" scaleShape="false" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chat.chatwithrsa.SenderController">
+    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="195.0" layoutX="25.0" layoutY="286.0" stroke="BLACK" strokeType="INSIDE" width="359.0" />
+    <TextField id="messageSend" fx:id="messageSend" layoutX="104.0" layoutY="445.0" prefHeight="26.0" prefWidth="241.0" promptText="type a message" />
+    <Label layoutX="35.0" layoutY="447.0" style="-fx-text-fill: #0000FF;" text="Message" />
+    <ImageView fitHeight="273.0" fitWidth="409.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@images/securityMan.jpg" />
+        </image>
+    </ImageView>
+    <TextArea id="textArea" fx:id="textArea" editable="false" layoutX="105.0" layoutY="298.0" prefHeight="126.0" prefWidth="269.0" />
+    <Separator layoutX="105.0" layoutY="434.0" prefHeight="4.0" prefWidth="269.0" />
+    <ImageView fitHeight="26.0" fitWidth="31.0" layoutX="350.0" layoutY="445.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@images/send.jpeg" />
+        </image>
+    </ImageView>
+   <Button id="sendButton" fx:id="sendButton" layoutX="347.0" onAction="#sendMyMessage" layoutY="445.0" mnemonicParsing="false" opacity="0.0" prefHeight="16.0" prefWidth="26.0" text="Button" textFill="WHITE" />
+</Pane>
