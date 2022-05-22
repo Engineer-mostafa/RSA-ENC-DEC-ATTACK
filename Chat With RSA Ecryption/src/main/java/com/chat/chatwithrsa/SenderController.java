@@ -65,7 +65,7 @@ public class SenderController implements Initializable {
                     out.println(encrypted);
                 else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setContentText("your message can't be send by this n");
+                    alert.setContentText("your message can't be send by this n please choose larger n");
                     alert.showAndWait();
                     return;
                 }

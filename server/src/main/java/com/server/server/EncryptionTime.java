@@ -9,6 +9,10 @@ import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.math.BigInteger;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class EncryptionTime extends Application {
 
@@ -16,8 +20,8 @@ public class EncryptionTime extends Application {
     public void start(Stage stage) throws IOException {
         stage.setTitle("RSA Encryption Time");
 
-        NumberAxis xAxis = new NumberAxis(0, 200, 10);
-        NumberAxis yAxis = new NumberAxis(0, 200, 10);
+        NumberAxis xAxis = new NumberAxis(0, 20000, 1000);
+        NumberAxis yAxis = new NumberAxis(0, 300, 10);
         xAxis.setLabel("bits");
         yAxis.setLabel("time (us)");
         LineChart lineChart = new LineChart(xAxis, yAxis);
@@ -25,7 +29,7 @@ public class EncryptionTime extends Application {
 
         XYChart.Series series = new XYChart.Series<Number, Number>();
         series.setName("RSA Encryption Time Vs. Key Size In Bits");
-        series.setData(measureEncryptionTimeForBits(10,100));
+        series.setData(measureEncryptionTimeForBits("CMP23 Will Graduate At 2023 whit RSA Encryption Time Vs. Key Size In Bits Assignment Grade Excellent"));
 
         Scene scene = new Scene(lineChart, 1500.0, 600.0);
         lineChart.getData().add(series);
@@ -35,11 +39,20 @@ public class EncryptionTime extends Application {
     }
 
 
-    private ObservableList measureEncryptionTimeForBits(Integer minBits , Integer maxBits){
+    private ObservableList measureEncryptionTimeForBits(String message){
         XYChart.Series list = new XYChart.Series();
-        list.getData().add(new XYChart.Data<>(1,1));
-        list.getData().add(new XYChart.Data<>(2,2));
-        list.getData().add(new XYChart.Data<>(100,100));
+        RSA rsa = new RSA();
+        BigInteger m = rsa.asBase256Number(message);
+        int startWithN = rsa.generatRSAParamsWithMessage(m).bitLength();
+
+        for (int i = startWithN+1; i < startWithN * 5 ; i+=1){
+            rsa.generatRSAParamsWithN(i);
+            Instant start = Instant.now();
+            rsa.encrypt(message);
+            Instant end = Instant.now();
+            list.getData().add(new XYChart.Data<>(i,(float) Duration.between(start, end).toNanos()/1000));
+
+        }
 
         return list.getData();
 
